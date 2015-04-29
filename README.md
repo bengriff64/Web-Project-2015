@@ -15,6 +15,11 @@ Programming Team Liason: Elliot Irwin
 
 ## Patient Pathway Application
 
-The Repository uses Bower for Dependency Management
+Use the GitHub Application for handling the Git commands you'll need to do, such as pushing code to the repo and getting the latest files
 
-Bower Installation Instructions - http://bower.io/#install-bower
+- Windows: https://windows.github.com/
+- OSX: https://mac.github.com/
+
+In the App, click Clone and put in the URL for this Repo. It will create a directory on your computer linked to this repo. DON'T MOVE IT
+
+The Repository uses Bower for Dependency Management<br>Bower Installation Instructions - http://bower.io/#install-bower
