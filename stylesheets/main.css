@@ -12,7 +12,15 @@
 }
 
 #sidebar{
+	display: none;
 	width: 100%;
 	height: 100px;
+	position: fixed;
+	top: 0;
 	background-color: #3177e9;
+}
+
+#pathwayContainer{
+	width: 100%;
+	height: 800px;
 }
