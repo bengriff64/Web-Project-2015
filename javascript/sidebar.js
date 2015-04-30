@@ -1,72 +1,98 @@
 var Sidebar = function (params) {
 
-	var $sidebar = $('#sidebar');
-	var $patientEmail = $('#sbPatientEmail');
-	var $catSelect = $('#sbCategory');
-	var $mediaList = $('#mediaList');
+  var $sidebar = $('#sidebar');
+  var $patientEmail = $('#sbPatientEmail');
+  var $catSelect = $('#sbCategory');
+  var $mediaList = $('#mediaList');
+  var currentCategory = 'All';
+  var fullMediaList = [];
+  var _self = this;
 
-	var _self = this;
+  var filterMediaByCategory = function (category) {
+    var filteredMedia = [];
+    for (var i = 0; i < fullMediaList.length; i++) {
+      if (fullMediaList[i].tags.indexOf(category) > -1) {
+        filteredMedia.push(fullMediaList[i]);
+      }
+    }
 
-	var render = function(){
-		$sidebar.height(_self.height);
+    return filteredMedia;
+  };
 
-		var patientEmail = util.parseJSON(mockDB.get('patient')).email;
-		var categories = util.parseJSON(mockDB.get('categories'));
-		var media = util.parseJSON(mockDB.get('media'));
+  var render = function () {
+    $sidebar.height(_self.height);
 
-		_self.updatePatientEmail(patientEmail);
-		_self.updateCategories(categories);
-		_self.updateMedia(media);
-	};
+    var patientEmail = util.parseJSON(mockDB.get('patient')).email;
+    var categories = util.parseJSON(mockDB.get('categories'));
+    fullMediaList = util.parseJSON(mockDB.get('media'));
 
-	/**
-	 * Height at which the sidebar fixes to top of screen
-	 * @type {Number}
-	 */
-	this.fixPos = params.fixPos || 0;
-	this.height = params.height || 100;
+    _self.updatePatientEmail(patientEmail);
+    _self.updateCategories(categories);
+    _self.updateMedia(fullMediaList);
 
-	this.unfix = function () {
-		$sidebar.css({
-			position: 'absolute',
-			top: _self.fixPos
-		});
-	};
-	this.fix = function () {
-		$sidebar.css({
-			position: 'fixed',
-			top: 0
-		});
-	};
+    $catSelect.on('change', function (e) {
+      var categorySelected = $("option:selected", this);
+      if (categorySelected.val() === 'All') {
+        _self.updateMedia(fullMediaList);
+      }
+      else {
+        var filteredMedia = filterMediaByCategory(categorySelected.val());
+        _self.updateMedia(filteredMedia);
+      }
+    });
+  };
 
-	/**
-	 * @param {String} patientEmail
-	 */
-	this.updatePatientEmail = function(patientEmail){
-		$patientEmail.val(patientEmail);
-	};
+  /**
+   * Height at which the sidebar fixes to top of screen
+   * @type {Number}
+   */
+  this.fixPos = params.fixPos || 0;
+  this.height = params.height || 100;
 
-	/**
-	 * @param {Array} categories - empties before adding categories
-	 */
-	this.updateCategories = function(categories){
-		$catSelect.empty();
-		$catSelect.append($("<option></option>").attr("value", null).text('All'));
-		$.each(categories, function(i, category){
-			$catSelect.append($("<option></option>").attr("value", category).text(category));
-		});
-	};
+  this.unfix = function () {
+    $sidebar.css({
+      position: 'absolute',
+      top: _self.fixPos
+    });
+  };
+  this.fix = function () {
+    $sidebar.css({
+      position: 'fixed',
+      top: 0
+    });
+  };
 
-	/**
-	 * update Media list - empties before adding media
-	 * @param {Array} media
-	 */
-	this.updateMedia = function(media){
-		$mediaList.empty();
-		$.each(media, function(i, item){
-			$mediaList.append($("<li></li>").text(item.title));
-		});
-	};
+  /**
+   * @param {String} patientEmail
+   */
+  this.updatePatientEmail = function (patientEmail) {
+    $patientEmail.val(patientEmail);
+  };
 
-	render();
+  /**
+   * @param {Array} categories - empties before adding categories
+   */
+  this.updateCategories = function (categories) {
+    $catSelect.empty();
+    $catSelect.append($("<option></option>").attr("value", null).text('All'));
+    $.each(categories, function (i, category) {
+      $catSelect.append($("<option></option>").attr("value", category).text(category));
+    });
+  };
+
+  /**
+   * update Media list - empties before adding media
+   * @param {Array} media
+   */
+  this.updateMedia = function (media) {
+    $mediaList.empty();
+    if (media.length === 0) {
+      $mediaList.append($("<span>No Items</span>"));
+    }
+    $.each(media, function (i, item) {
+      $mediaList.append($("<li></li>").text(item.title));
+    });
+  };
+
+  render();
 };
