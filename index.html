@@ -18,10 +18,23 @@
 	<div id="pathwayContainer">
 	</div>
 	<div id="sidebar">
-		<span class="patient-email"></span>
+		<div class="form-horizontal col-sm-3">
+			<div class="form-group">
+		    <label for="patientEmail">Patient Email</label>
+		    <input type="text" disabled class="form-control" id="sbPatientEmail">
+	  	</div>
+			<div class="form-group">
+		    <label for="sbCategories">Filter by Category</label>
+		    <select class="form-control" id="sbCategory"></select>
+	  	</div>
+    </div>
+		<div id="mediaListContainer" class="col-sm-8 pull-right">
+			<ul id="mediaList"></ul>
+		</div>
 	</div>
+	<script type="text/javascript" src="javascript/database.js"></script>
 	<script type="text/javascript" src="javascript/main.js"></script>
 	<script type="text/javascript" src="javascript/sidebar.js"></script>
-	<script type="text/javascript" src="javascript/database.js"></script>
+	<script type="text/javascript" src="javascript/util.js"></script>
 </body>
 </html>
