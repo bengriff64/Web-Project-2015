@@ -87,10 +87,28 @@ var Sidebar = function (params) {
   this.updateMedia = function (media) {
     $mediaList.empty();
     if (media.length === 0) {
-      $mediaList.append($("<span>No Items</span>"));
+      $mediaList.append($('<span>No Items</span>'));
     }
+    var start = function () {
+      $mediaList.css('overflow-y', 'hidden');
+    };
+    var stop = function () {
+      $mediaList.css('overflow-y', 'scroll');
+    };
     $.each(media, function (i, item) {
-      $mediaList.append($("<li></li>").text(item.title));
+      var li = $('<li class="sb-media-item"></li>')
+        .text(item.title)
+        .data('media-item', item)
+        .draggable({
+          helper: 'clone',
+          appendTo: 'body',
+          opacity: 0.6,
+          revert: true,
+          scroll: false,
+          start: start,
+          stop: stop
+        });
+      $mediaList.append(li);
     });
   };
 

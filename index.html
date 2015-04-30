@@ -6,6 +6,7 @@
 	<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
 	<link rel="stylesheet" href="stylesheets/main.css">
 	<script type="text/javascript" src="bower_components/jquery/dist/jquery.js"></script>
+	<script type="text/javascript" src="bower_components/jquery-ui/jquery-ui.min.js"></script>
 </head>
 <body>
 	<nav id="navbar" class="navbar navbar-default" role="navigation">
@@ -16,24 +17,29 @@
 		<button id="toggleSidebar" class="btn">Toggle Sidebar</button>
 	</div>
 	<div id="pathwayContainer">
-	</div>
-	<div id="sidebar">
-		<div class="form-horizontal col-sm-3">
-			<div class="form-group">
-		    <label for="patientEmail">Patient Email</label>
-		    <input type="text" disabled class="form-control" id="sbPatientEmail">
-	  	</div>
-			<div class="form-group">
-		    <label for="sbCategories">Filter by Category</label>
-		    <select class="form-control" id="sbCategory"></select>
-	  	</div>
-    </div>
-		<div id="mediaListContainer" class="col-sm-8 pull-right">
-			<ul id="mediaList"></ul>
+		<div id="sidebar">
+			<div id="logoContainer" class="pull-left">
+				<image class="logo" src="images/logo-transparent.png"/>
+			</div>
+			<div class="form-horizontal col-sm-3">
+				<div class="form-group">
+			    <label for="patientEmail">Patient Email</label>
+			    <input type="text" disabled class="form-control" id="sbPatientEmail">
+		  	</div>
+				<div class="form-group">
+			    <label for="sbCategories">Filter by Category</label>
+			    <select class="form-control" id="sbCategory"></select>
+		  	</div>
+	    </div>
+			<div id="mediaListContainer" class="col-sm-8 pull-right">
+				<ul id="mediaList"></ul>
+			</div>
 		</div>
+		<div id="pathway"></div>
 	</div>
 	<script type="text/javascript" src="javascript/database.js"></script>
 	<script type="text/javascript" src="javascript/main.js"></script>
+	<script type="text/javascript" src="javascript/pathway.js"></script>
 	<script type="text/javascript" src="javascript/sidebar.js"></script>
 	<script type="text/javascript" src="javascript/util.js"></script>
 </body>
