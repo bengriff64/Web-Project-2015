@@ -7,7 +7,7 @@ body{
 }
 
 #dashboardContainer{
-	height: 200px;
+	height: 100px;
 	width: 100%;
 	background-color: #3983c4;
 }
@@ -18,9 +18,10 @@ body{
 #sidebar{
 	display: visible;
 	width: 100%;
-	height: 100px;
+	height: 1000px;
 	position: fixed;
 	top: 0;
+	z-index: 2;
 	background-color: #3177e9;
 	color: #ffffff;
 	padding: 20px 20px 20px 10px;
@@ -51,13 +52,43 @@ body{
 	margin-top: 20px;
 }
 
-#pathway{
-	width: 100%;
-	height: 1000px;
-}
-
 .logo{
 	position: relative;
 	width: 50px;
 	margin-right: 10px;
+}
+
+/* PATHWAY */
+
+#pathway{
+	width: 100%;
+	height: 520px;
+}
+
+#pathwayLeft{
+	border-right: 5px solid red;
+}
+.pathway-side{
+	float: left;
+	position: relative;
+	z-index: 1;
+	width: 50%;
+	height: 100%;
+}
+
+.pw-media-item{
+	position: absolute;
+	background-color: red;
+	width: 200px;
+	height: 200px;
+	padding: 10px;
+	border-radius: 20px;
+	border-width: 5px;
+	border-color: #3177e9;
+}
+#pathwayLeft .pw-media-item{
+	right: 40px;
+}
+#pathwayRight .pw-media-item{
+	left: 40px;
 }

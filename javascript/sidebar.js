@@ -5,18 +5,44 @@ var Sidebar = function (params) {
   var $catSelect = $('#sbCategory');
   var $mediaList = $('#mediaList');
   var currentCategory = 'All';
-  var fullMediaList = [];
   var _self = this;
 
-  var filterMediaByCategory = function (category) {
+  var filterMediaByCategory = function () {
     var filteredMedia = [];
+    var fullMediaList = mediaService.get();
+    if (currentCategory === 'All') {
+      return fullMediaList;
+    }
+
     for (var i = 0; i < fullMediaList.length; i++) {
-      if (fullMediaList[i].tags.indexOf(category) > -1) {
+      if (fullMediaList[i].tags.indexOf(currentCategory) > -1) {
         filteredMedia.push(fullMediaList[i]);
       }
     }
-
     return filteredMedia;
+  };
+
+  var dragStart = function () {
+    $mediaList.css('overflow-y', 'hidden');
+  };
+  var dragStop = function () {
+    $mediaList.css('overflow-y', 'scroll');
+  };
+  var createMediaListItem = function (item) {
+    var li = $('<li class="sb-media-item"></li>')
+      .text(item.title)
+      .data('media-item', item)
+      .draggable({
+        helper: 'clone',
+        appendTo: 'body',
+        zIndex: 10,
+        opacity: 0.6,
+        revert: true,
+        scroll: false,
+        start: dragStart,
+        stop: dragStop
+      });
+    return li;
   };
 
   var render = function () {
@@ -24,21 +50,14 @@ var Sidebar = function (params) {
 
     var patientEmail = util.parseJSON(mockDB.get('patient')).email;
     var categories = util.parseJSON(mockDB.get('categories'));
-    fullMediaList = util.parseJSON(mockDB.get('media'));
 
     _self.updatePatientEmail(patientEmail);
     _self.updateCategories(categories);
-    _self.updateMedia(fullMediaList);
+    _self.updateMediaList();
 
     $catSelect.on('change', function (e) {
-      var categorySelected = $("option:selected", this);
-      if (categorySelected.val() === 'All') {
-        _self.updateMedia(fullMediaList);
-      }
-      else {
-        var filteredMedia = filterMediaByCategory(categorySelected.val());
-        _self.updateMedia(filteredMedia);
-      }
+      currentCategory = $("option:selected", this).val();
+      _self.updateMediaList();
     });
   };
 
@@ -84,32 +103,18 @@ var Sidebar = function (params) {
    * update Media list - empties before adding media
    * @param {Array} media
    */
-  this.updateMedia = function (media) {
+  this.updateMediaList = function () {
+    var mediaList = filterMediaByCategory();
+
     $mediaList.empty();
-    if (media.length === 0) {
+    if (mediaList.length === 0) {
       $mediaList.append($('<span>No Items</span>'));
     }
-    var start = function () {
-      $mediaList.css('overflow-y', 'hidden');
-    };
-    var stop = function () {
-      $mediaList.css('overflow-y', 'scroll');
-    };
-    $.each(media, function (i, item) {
-      var li = $('<li class="sb-media-item"></li>')
-        .text(item.title)
-        .data('media-item', item)
-        .draggable({
-          helper: 'clone',
-          appendTo: 'body',
-          opacity: 0.6,
-          revert: true,
-          scroll: false,
-          start: start,
-          stop: stop
-        });
-      $mediaList.append(li);
-    });
+    else {
+      $.each(mediaList, function (i, mediaItem) {
+        $mediaList.append(createMediaListItem(mediaItem));
+      });
+    }
   };
 
   render();

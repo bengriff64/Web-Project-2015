@@ -11,7 +11,7 @@ $(document).ready(function () {
     fixPos: sidebarFixPos,
     height: sidebarHeight
   });
-  sidebar.unfix
+  sidebar.unfix();
 
   pathway = new Pathway();
 
