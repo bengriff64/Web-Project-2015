@@ -1,0 +1,116 @@
+.container {
+  width: 882px;
+}
+body{
+	background-color: #2982b9;
+}
+.well{
+	background-color: #ecf0f1;
+	  border-radius: 40px;
+}
+p{
+	color: #848181;
+}
+#userimage{
+	position: relative;
+	right: 305px;
+	top: 80px;
+}
+.glyphicon.glyphicon-user {
+    font-size: 162px;
+    color: #ababab;
+}
+#user{
+	position: relative;
+	left:177px;
+	padding-top:30px;
+	padding-bottom: 35px;
+}
+#pass{
+	position: relative;
+	left:177px;
+	padding-top: 30px;
+	padding-bottom: 35px;
+}
+#email{
+	position: relative;
+	left:177px;
+	padding-top: 0px;
+	padding-bottom: 11px;
+}
+.checkbox{
+	padding-top: 30px;
+	position: relative;
+	left: 133px;
+	font-size: 29px;
+}
+#checkboxproperty{
+	position: relative;
+	bottom: 40px;
+	left: 265px;
+}
+#cogclass{
+	position: relative;
+	right: 258px;
+}
+
+/*Form*/
+
+
+.form-signin {
+      position: relative;
+	  max-width: 487px;
+	  max-height: 329px;
+	  padding-top: 15px;
+	  margin: 0 auto;
+	  bottom: 123px;
+	  right: 11px;
+}
+.form-signin .form-control {
+  position: relative;
+  height: auto;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 10px;
+  font-size: 16px;
+}
+.form-signin .form-control:focus {
+  z-index: 2;
+}
+.form-signin input[type="email"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+  margin-bottom: 15px;
+}
+.form-signin input[type="password"] {
+  margin-bottom: 15px;
+}
+#user{
+	padding-top:30px;
+}
+#pass{
+	padding-top: 30px;
+}
+#button1 .btn {
+	border-radius: 0px;
+}
+#button2 .btn{
+	border-radius: 0px;
+}
+#logbutton{
+	width:50%;
+	position: relative;
+	left:228px;
+}
+#forgotpass{
+	position: relative;
+	bottom:39px;
+	right:131px;
+	font-size:18px;
+}
+a:hover{
+	text-decoration: none;
+	 color: #f6ffff;
+}

@@ -41,3 +41,7 @@
 	right:131px;
 	font-size:18px;
 }
+a:hover{
+	text-decoration: none;
+	 color: #f6ffff;
+}
