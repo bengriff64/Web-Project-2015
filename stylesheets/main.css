@@ -14,9 +14,12 @@ body{
 #dashboardContainer div{
 	color: white;
 }
+#toggleSidebar{
+	display: none;
+}
 
 #sidebar{
-	display: visible;
+	display: none;
 	width: 100%;
 	height: 1000px;
 	position: fixed;
@@ -66,7 +69,7 @@ body{
 }
 
 #pathwayLeft{
-	border-right: 5px solid red;
+	border-right: 20px solid #8344ad;
 }
 .pathway-side{
 	float: left;
@@ -78,7 +81,7 @@ body{
 
 .pw-media-item{
 	position: absolute;
-	background-color: red;
+	background-color: #8344ad;
 	width: 200px;
 	height: 200px;
 	padding: 10px;
@@ -91,4 +94,15 @@ body{
 }
 #pathwayRight .pw-media-item{
 	left: 40px;
+}
+
+#dropOverlay{
+	width: 50%;
+	height: 200px;
+	margin: auto;
+	position: fixed;
+	z-index: 10;
+	bottom: 20%;
+	display: none;
+	border: dashed 5px grey;
 }

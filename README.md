@@ -25,9 +25,3 @@ In the App, click Clone and put in the URL for this Repo. It will create a direc
 The Repository uses Bower for Dependency Management<br>Bower Installation Instructions - http://bower.io/#install-bower
 
 ### Connecting to the mock database
-
-There is a javascript variable called mockDB which holds all the JSON data we're using.
-
-To access the data, you type mockDB.get('patient'), where the parameter (eg. 'patient') is the type of data you want. You'll get back JSON data which you then need to parse. I've written a small JSON parse method to use.
-
-var patientData = util.parseJSON(mockDB.get('patient'))
