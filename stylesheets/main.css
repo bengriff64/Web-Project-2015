@@ -81,12 +81,12 @@ body{
 
 .pw-media-item{
 	position: absolute;
-	background-color: #8344ad;
-	width: 200px;
-	height: 200px;
+	background-color: #eeeeee;
+	width: 300px;
+	height: 300px;
 	padding: 10px;
 	border-radius: 20px;
-	border-width: 5px;
+	border: 8px solid;
 	border-color: #3177e9;
 }
 #pathwayLeft .pw-media-item{
@@ -105,4 +105,11 @@ body{
 	bottom: 20%;
 	display: none;
 	border: dashed 5px grey;
+}
+
+.favourite{
+	position: relative;
+  top: 243px;
+  right: -20px;
+  float: right;
 }

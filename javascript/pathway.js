@@ -8,10 +8,6 @@ var Pathway = function () {
   var mediaItems = [];
   var _self = this;
 
-  var createMediaItem = function (media) {
-    return new MediaItem(media);
-  };
-
   var redrawPathway = function () {
     pathwaySide.$left.empty();
     pathwaySide.$right.empty();
@@ -36,8 +32,6 @@ var Pathway = function () {
     else {
       mediaService.removeFromPathway(mediaItems[i]);
       mediaItems.splice(i, 1);
-      sidebar.updateMediaList();
-      redrawPathway();
     }
   };
 
@@ -53,7 +47,7 @@ var Pathway = function () {
         $('#dropOverlay').toggle();
       },
       drop: function (e, ui) {
-        var mediaItem = createMediaItem(ui.draggable.data('media-item'));
+        var mediaItem = new MediaItem(ui.draggable.data('media-item'));
         _self.addItem(mediaItem);
         mediaService.addToPathway(mediaItem);
         sidebar.updateMediaList();
@@ -74,7 +68,7 @@ var Pathway = function () {
       $side = pathwaySide.$right;
       count = rightCount;
     }
-    var bottomOffset = (count * 200) + (40 * (count + 1));
+    var bottomOffset = (count * 300) + (40 * (count + 1));
     mediaBlock.css('bottom', bottomOffset);
     $side.append(mediaBlock);
   };
@@ -83,7 +77,7 @@ var Pathway = function () {
     var leftCount = pathwaySide.$left.children().length;
     var rightCount = pathwaySide.$right.children().length;
     var blockHeight = leftCount >= rightCount ? leftCount : rightCount;
-    blockHeight = (blockHeight * 200) + (40 * (blockHeight + 1));
+    blockHeight = (blockHeight * 300) + (40 * (blockHeight + 1));
     $pathway.height(blockHeight + sidebarHeight + 40);
   };
 
@@ -95,6 +89,8 @@ var Pathway = function () {
 
   this.removeItem = function (mediaItem) {
     removeItemById(mediaItem.id);
+    sidebar.updateMediaList();
+    redrawPathway();
   };
 
   this.filterFavourites = function () {
@@ -103,10 +99,11 @@ var Pathway = function () {
 
   this.load = function (newPathway) {
     for (var i = 0; i < newPathway.media.length; i++) {
-      var mediaItem = createMediaItem(newPathway.media[i]);
+      var mediaItem = new MediaItem(newPathway.media[i]);
       _self.addItem(mediaItem);
       mediaService.addToPathway(mediaItem);
     }
+    sidebar.updateMediaList();
   };
 
   render();
