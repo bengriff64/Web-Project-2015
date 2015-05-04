@@ -1,1 +1,1 @@
-"{\"id\": 356,\"email\": \"patient_john@example.com\"}"
+"{\"id\":1,\"email\":\"clinician_1@example.com\",\"password\":\"hashme\"}"

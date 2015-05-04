@@ -7,6 +7,7 @@
 	<link rel="stylesheet" href="stylesheets/login.css">
 	<script type="text/javascript" src="bower_components/jquery/dist/jquery.js"></script>
 	<script type="text/javascript" src="bower_components/jquery-ui/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="javascript/util.js"></script>
 </head>
 <body>
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -23,20 +24,20 @@
 		  <form class="form-signin" method="post">
 			  <p>Choose: </p>
 			  <select class="form-control" id="chooselist">
-				    <option id="1" value="Patient">Patient</option>
-				    <option id="2" value="Clinician">Clinician</option>
-				    <option id="3" value="Administrator">Administrator</option>
+						<option value="1">Administrator</option>
+				    <option value="2">Clinician</option>
+						<option value="3">Patient</option>
 			  </select>
 			  <div id="user">
-<label for="inputtext" class="sr-only">Username</label>
-<input name="username" type="text" id="inputtext" class="form-control" placeholder="Username" required autofocus>
+<label for="inputEmail" class="sr-only">Email</label>
+<input name="inputEmail" type="text" id="inputEmail" class="form-control" placeholder="inputEmail" required autofocus>
 			  </div>
 			  <div id="pass">
 <label for="inputPassword" class="sr-only">Password</label>
 <input name="password" type="password" id="inputPassword" class="form-control" placeholder="Password" required>
 			  </div>
 			  <div id="logbutton">
-<input type="button" button class="btn btn-lg btn-primary btn-block"value="Log in" onClick="clicked()">
+<input type="button" button class="btn btn-lg btn-primary btn-block"value="Log in">
 			  </div>
 			  <div id="forgotpass">
 <p><a href="#">Forgot your password?</p>
@@ -44,9 +45,6 @@
 </form>
 	 </div>
 	<script type="text/javascript" src="javascript/database.js"></script>
-	<script type="text/javascript" src="javascript/main.js"></script>
-	<script type="text/javascript" src="javascript/pathway.js"></script>
-	<script type="text/javascript" src="javascript/sidebar.js"></script>
-	<script type="text/javascript" src="javascript/util.js"></script>
+	<script type="text/javascript" src="javascript/login.js"></script>
 </body>
 </html>
