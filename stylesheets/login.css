@@ -16,11 +16,6 @@
 .form-signin .form-control:focus {
   z-index: 2;
 }
-.form-signin input[type="email"] {
-  margin-bottom: -1px;
-  border-bottom-right-radius: 0;
-  border-bottom-left-radius: 0;
-}
 .form-signin input[type="password"] {
   margin-bottom: 25px;
 }
@@ -48,4 +43,9 @@ a:hover{
 #jumboimg img{
   position: relative;
   top: 17px;
+  width:10%
+}
+.jumbotron{
+	padding-top: 50px;
+	padding-bottom: 30px;
 }

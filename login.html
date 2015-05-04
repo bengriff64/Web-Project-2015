@@ -4,7 +4,6 @@
 	<meta charset="UTF-8">
 	<title>Login Page</title>
 	<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
-	<link rel="stylesheet" href="stylesheets/main.css">
 	<link rel="stylesheet" href="stylesheets/login.css">
 	<script type="text/javascript" src="bower_components/jquery/dist/jquery.js"></script>
 	<script type="text/javascript" src="bower_components/jquery-ui/jquery-ui.min.js"></script>
@@ -22,6 +21,12 @@
 	 <div class="container text-center">
 		 <h1>Login to your Account to access your timeline</h1>
 		  <form class="form-signin" method="post">
+			  <p>Choose: </p>
+			  <select class="form-control" id="chooselist">
+				    <option id="1" value="Patient">Patient</option>
+				    <option id="2" value="Clinician">Clinician</option>
+				    <option id="3" value="Administrator">Administrator</option>
+			  </select>
 			  <div id="user">
 <label for="inputtext" class="sr-only">Username</label>
 <input name="username" type="text" id="inputtext" class="form-control" placeholder="Username" required autofocus>
@@ -31,7 +36,7 @@
 <input name="password" type="password" id="inputPassword" class="form-control" placeholder="Password" required>
 			  </div>
 			  <div id="logbutton">
-<button class="btn btn-lg btn-primary btn-block" type="submit">Log in</button>
+<input type="button" button class="btn btn-lg btn-primary btn-block"value="Log in" onClick="clicked()">
 			  </div>
 			  <div id="forgotpass">
 <p><a href="#">Forgot your password?</p>
